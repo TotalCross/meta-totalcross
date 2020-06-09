@@ -1,0 +1,88 @@
+#+STARTUP: indent
+#+LANGUAGE: en
+#+TITLE: This layer provides [[https://github.com/totalcross][TotalCross]] recipes for use with OpenEmbedded and/or Yocto
+#+AUTHOR: O.S. Systems Software
+#+EMAIL: contato@ossystems.com.br
+#+LATEX_CLASS: article
+#+OPTIONS: date:nil
+#+OPTIONS: toc:nil
+
+** This layer depends on
+
+To build a TotalCross application you need to add the these layers to your ~bblayers.conf~ file or use
+~bitbake-layers~ utility to add them.
+
+| Layer Name   | URL                                            | Branch  |
+|--------------+------------------------------------------------+---------|
+| OE-Core      | https://git.openembedded.org/openembedded-core | dunfell |
+| meta-oe      | https://git.openembedded.org/meta-openembedded | dunfell |
+| meta-browser | https://github.com/OSSystems/meta-browser      | master  |
+| meta-java    | https://git.yoctoproject.org/git/meta-java     | master  |
+| meta-python2 | https://git.openembedded.org/meta-python2      | dunfell |
+
+** Recipes
+
+This layer provides the following recipes:
+
+| Recipe Name         | Description                |
+|---------------------+----------------------------|
+| totalcross-launcher | TotalCross Launcher        |
+| totalcross-vm-core  | TotalCross Byte Code       |
+| totalcross-vm       | TotalCross Virtual Machine |
+
+** Classes
+
+This layer provides a class to package your application. The class aims to help
+you to package your application into the final image. By default your
+application will be installed into ~/usr/share/app-name~, this directory can be
+changed as shown below.
+
+In summary, the class installs the TotalCross Byte Codes into the application
+directory and renames the TotalCross Launcher to the same name as the
+application. Also, creates a script called ~totalcross-run~ that is used to launch
+the application and you can add options to run it, e.g. set the
+~SDL_VIDEO_DRIVER~, the ~DISPLAY~ variable or other values that is mandatory to run
+the application.
+
+To use the totalcross-app class just add this to your application recipe:
+
+#+BEGIN_SRC sh
+  inherit totalcross-app
+#+END_SRC
+
+*** Variables that can be used in your recipe:
+
+| Variable Name           | Description                                                      | Default Value |
+|-------------------------+------------------------------------------------------------------+---------------|
+| TOTALCROSS_APP_DIR_NAME | Directory name for application installation                      | ~/usr/share~    |
+| TOTALCROSS_APP_NAME     | Application name                                                 | ~${PN}~         |
+| TOTALCROSS_RUN_OPTIONS  | Options to be exported to environment before run the application | empty         |
+
+** Require distro features
+
+To build and run a TotalCross application you can choose to use X11 or Wayland
+as graphical backend.
+
+Add to your ~local.conf~ or distro configuration the following lines:
+
+- X11 backend
+
+#+BEGIN_SRC sh
+  DISTRO_FEATURES_append = " opengl x11"
+#+END_SRC
+
+- Wayland backend
+
+#+BEGIN_SRC sh
+  DISTRO_FEATURES_append = " opengl wayland"
+#+END_SRC
+
+** Contributing
+
+The preferred way to contribute to this layer is to send GitHub pull requests or
+report problems in GitHub's issue tracker.
+
+** Maintainers
+
+- Fabio Berton <fabio.berton@ossystems.com.br>
+- Otavio Salvador <otavio@ossystems.com.br>
