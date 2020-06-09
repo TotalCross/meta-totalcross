@@ -1,0 +1,27 @@
+From a4a4d005367d44d56ee4cb8bef87f420dcdb5d97 Mon Sep 17 00:00:00 2001
+From: Fabio Berton <fabio.berton@ossystems.com.br>
+Date: Wed, 22 Apr 2020 15:27:30 -0300
+Subject: [PATCH] gn/BUILDCONFIG.gn: Fix is_clang.py exec_script path
+Organization: O.S. Systems Software LTDA.
+
+Signed-off-by: Fabio Berton <fabio.berton@ossystems.com.br>
+---
+ gn/BUILDCONFIG.gn | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gn/BUILDCONFIG.gn b/gn/BUILDCONFIG.gn
+index 9ab3637a41a..97072a1c34e 100644
+--- a/gn/BUILDCONFIG.gn
++++ b/gn/BUILDCONFIG.gn
+@@ -82,7 +82,7 @@ if (current_cpu == "") {
+ is_clang = is_android || is_ios || is_mac ||
+            (cc == "clang" && cxx == "clang++") || clang_win != ""
+ if (!is_clang && !is_win) {
+-  is_clang = exec_script("gn/is_clang.py",
++  is_clang = exec_script("is_clang.py",
+                          [
+                            cc,
+                            cxx,
+-- 
+2.26.2
+
