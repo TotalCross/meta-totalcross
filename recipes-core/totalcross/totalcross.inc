@@ -8,6 +8,6 @@ inherit features_check
 REQUIRED_DISTRO_FEATURES = "opengl"
 
 PV = "6.0.4+${SRCPV}"
-BRANCH = "bugfix/deploy-headless"
-SRCREV = "2cfacfb7b02032ce041d115c4cf478db7123ea52"
-SRC_URI = "git://github.com/OSSystems/totalcross.git;protocol=https;branch=${BRANCH}"
+BRANCH = "develop"
+SRCREV = "bd9fb513133ee1309a8ff50dbcabbd6a1ffce58f"
+SRC_URI = "git://github.com/TotalCross/totalcross.git;protocol=https;branch=${BRANCH}"
