@@ -7,7 +7,7 @@ inherit features_check
 
 REQUIRED_DISTRO_FEATURES = "opengl"
 
-PV = "6.0.4+${SRCPV}"
+PV = "6.1.0+${SRCPV}"
 BRANCH = "develop"
-SRCREV = "bd9fb513133ee1309a8ff50dbcabbd6a1ffce58f"
+SRCREV = "e403822fd387e9a9b09c508a2bb6921fc1f11d79"
 SRC_URI = "git://github.com/TotalCross/totalcross.git;protocol=https;branch=${BRANCH}"
