@@ -1,4 +1,4 @@
-DEPENDS = "totalcross-vm-core totalcross-launcher"
+DEPENDS = "totalcross-vm-core totalcross-vm"
 
 TOTALCROSS_APP_DIR_NAME ?= "${datadir}/${PN}"
 TOTALCROSS_APP_NAME ?= "${PN}"
@@ -33,4 +33,4 @@ FILES_${PN} += "${TOTALCROSS_APP_DIR_NAME}"
 
 RDEPENDS_${PN} += "totalcross-vm"
 
-INSANE_SKIP_${PN} += "already-stripped"
+INSANE_SKIP_${PN} += "already-stripped rpaths"
