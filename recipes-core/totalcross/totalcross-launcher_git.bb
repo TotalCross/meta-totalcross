@@ -30,3 +30,7 @@ do_install() {
 }
 
 FILES_${PN} += "${libdir}/totalcross/"
+
+# FIXME: This is a workaround as next release uses CMake and doesn't make sense
+# to spend too much time on this.
+INSANE_SKIP_${PN} = "ldflags"
