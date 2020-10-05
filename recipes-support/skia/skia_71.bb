@@ -63,3 +63,7 @@ do_install() {
     cp -rf ${S}/include ${D}${includedir}/${PN}/
     cp -rf ${S}/third_party ${D}${includedir}/${PN}/
 }
+
+# FIXME: This is a workaround as we're using an old release of Skia and doesn't
+# make sense to spend too much time on this.
+INSANE_SKIP_${PN} = "ldflags"
